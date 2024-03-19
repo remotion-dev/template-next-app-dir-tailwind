@@ -1,17 +1,5 @@
 import React, { useCallback } from "react";
 
-const textarea: React.CSSProperties = {
-  resize: "none",
-  lineHeight: 1.7,
-  display: "block",
-  width: "100%",
-  borderRadius: "var(--geist-border-radius)",
-  backgroundColor: "var(--background)",
-  padding: "var(--geist-half-pad)",
-  color: "var(--foreground)",
-  fontSize: 14,
-};
-
 export const Input: React.FC<{
   text: string;
   setText: React.Dispatch<React.SetStateAction<string>>;
@@ -26,9 +14,9 @@ export const Input: React.FC<{
 
   return (
     <input
+      className="leading-[1.7] block w-full rounded-geist bg-background p-geist-half text-foreground text-sm border border-unfocused-border-color transition-colors duration-150 ease-in-out focus:border-focused-border-color outline-none"
       disabled={disabled}
       name="title"
-      style={textarea}
       value={text}
       onChange={onChange}
     />

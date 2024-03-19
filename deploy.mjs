@@ -6,6 +6,7 @@ import {
 import dotenv from "dotenv";
 import path from "path";
 import { RAM, REGION, SITE_NAME, TIMEOUT } from "./config.mjs";
+import { webpackOverride } from "./remotion/webpack-override";
 
 console.log("Selected region:", REGION);
 dotenv.config();
@@ -64,6 +65,7 @@ const { siteName } = await deploySite({
   entryPoint: path.join(process.cwd(), "remotion", "index.ts"),
   siteName: SITE_NAME,
   region: REGION,
+  options: { webpackOverride },
 });
 
 console.log(siteName);

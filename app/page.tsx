@@ -14,26 +14,8 @@ import {
 } from "../types/constants";
 import { z } from "zod";
 import { RenderControls } from "../components/RenderControls";
-import { Tips } from "../components/Tips/Tips";
+import { Tips } from "../components/Tips";
 import { Spacing } from "../components/Spacing";
-
-const container: React.CSSProperties = {
-  maxWidth: 768,
-  margin: "auto",
-  marginBottom: 20,
-};
-
-const outer: React.CSSProperties = {
-  borderRadius: "var(--geist-border-radius)",
-  overflow: "hidden",
-  boxShadow: "0 0 200px rgba(0, 0, 0, 0.15)",
-  marginBottom: 40,
-  marginTop: 60,
-};
-
-const player: React.CSSProperties = {
-  width: "100%",
-};
 
 const Home: NextPage = () => {
   const [text, setText] = useState<string>(defaultMyCompProps.title);
@@ -46,8 +28,8 @@ const Home: NextPage = () => {
 
   return (
     <div>
-      <div style={container}>
-        <div className="cinematics" style={outer}>
+      <div className="max-w-screen-md m-auto mb-5">
+        <div className="overflow-hidden rounded-geist shadow-[0_0_200px_rgba(0,0,0,0.15)] mb-10 mt-16">
           <Player
             component={Main}
             inputProps={inputProps}
@@ -55,7 +37,11 @@ const Home: NextPage = () => {
             fps={VIDEO_FPS}
             compositionHeight={VIDEO_HEIGHT}
             compositionWidth={VIDEO_WIDTH}
-            style={player}
+            style={{
+              // Can't use tailwind class for width since player's default styles take presedence over tailwind's,
+              // but not over inline styles
+              width: "100%",
+            }}
             controls
             autoPlay
             loop

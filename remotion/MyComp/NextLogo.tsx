@@ -2,10 +2,6 @@ import { evolvePath } from "@remotion/paths";
 import React, { useMemo } from "react";
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 
-const mask: React.CSSProperties = {
-  maskType: "alpha",
-};
-
 const nStroke =
   "M149.508 157.52L69.142 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.165 149.508 157.52Z";
 
@@ -60,10 +56,17 @@ export const NextLogo: React.FC<{
 
   return (
     <svg style={style} fill="none" viewBox="0 0 180 180">
-      <mask height="180" id="mask" style={mask} width="180" x="0" y="0">
+      <mask
+        height="180"
+        id="mask"
+        className="[mask-type:alpha]"
+        width="180"
+        x="0"
+        y="0"
+      >
         <circle cx="90" cy="90" fill="black" r="90"></circle>
       </mask>
-      <mask id="n-mask" style={mask}>
+      <mask id="n-mask" className="[mask-type:alpha]">
         <path d={nStroke} fill="black"></path>
       </mask>
       <g mask="url(#mask)">

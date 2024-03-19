@@ -1,24 +1,4 @@
 import React from "react";
-import styles from "./styles.module.css";
-
-const titlerow: React.CSSProperties = {
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center",
-  justifyContent: "flex-start",
-};
-
-const titlestyle: React.CSSProperties = {
-  marginBottom: "0.75em",
-  marginTop: "0.75em",
-  color: "var(--foreground)",
-};
-
-const a: React.CSSProperties = {
-  textDecoration: "none",
-  color: "inherit",
-  flex: 1,
-};
 
 const Tip: React.FC<{
   title: React.ReactNode;
@@ -26,19 +6,25 @@ const Tip: React.FC<{
   href: string;
 }> = ({ title, description, href }) => {
   return (
-    <a href={href} target="_blank" rel="noreferrer" style={a}>
-      <div className={styles.item}>
-        <div style={titlerow}>
-          <h4 style={titlestyle}>{title}</h4>
-          <div className={styles.flex}></div>
-          <svg className={styles.icon} height="1em" viewBox="0 0 448 512">
+    <a href={href} target="_blank" rel="noreferrer" className="flex-1">
+      <div className="transition-transform duration-200 ease-in-out p-2.5 group hover:-translate-y-0.5">
+        <div className="flex flex-row items-center justify-start">
+          <h4 className="my-3 font-bold text-foreground">{title}</h4>
+          <div className="flex-1"></div>
+          <svg
+            className="opacity-0 transition-opacity duration-200 ease-in-out group-hover:opacity-100"
+            height="1em"
+            viewBox="0 0 448 512"
+          >
             <path
               fill="var(--foreground)"
               d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
             />
           </svg>
         </div>
-        <p className={styles.p}>{description}</p>
+        <p className="text-sm leading-normal text-subtitle mb-6">
+          {description}
+        </p>
       </div>
     </a>
   );
@@ -46,7 +32,7 @@ const Tip: React.FC<{
 
 export const Tips: React.FC = () => {
   return (
-    <div className={styles.row}>
+    <div className="flex flex-col md:flex-row font-geist">
       <Tip
         href="https://www.remotion.dev/docs/the-fundamentals"
         title="Learn Remotion"

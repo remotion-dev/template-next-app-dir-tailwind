@@ -7,8 +7,6 @@ import {
   useVideoConfig,
 } from "remotion";
 
-const outer: React.CSSProperties = {};
-
 export const TextFade: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
@@ -30,13 +28,6 @@ export const TextFade: React.FC<{
 
   const maskImage = `linear-gradient(-45deg, transparent ${leftStop}%, black ${rightStop}%)`;
 
-  const container: React.CSSProperties = useMemo(() => {
-    return {
-      justifyContent: "center",
-      alignItems: "center",
-    };
-  }, []);
-
   const content: React.CSSProperties = useMemo(() => {
     return {
       maskImage,
@@ -45,8 +36,8 @@ export const TextFade: React.FC<{
   }, [maskImage]);
 
   return (
-    <AbsoluteFill style={outer}>
-      <AbsoluteFill style={container}>
+    <AbsoluteFill>
+      <AbsoluteFill className="justify-center items-center">
         <div style={content}>{children}</div>
       </AbsoluteFill>
     </AbsoluteFill>

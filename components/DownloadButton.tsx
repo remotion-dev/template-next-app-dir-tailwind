@@ -1,20 +1,7 @@
 import React from "react";
 import { State } from "../helpers/use-rendering";
-import { Button } from "./Button/Button";
+import { Button } from "./Button";
 import { Spacing } from "./Spacing";
-
-const light: React.CSSProperties = {
-  opacity: 0.6,
-};
-
-const link: React.CSSProperties = {
-  textDecoration: "none",
-};
-
-const row: React.CSSProperties = {
-  display: "flex",
-  flexDirection: "row",
-};
 
 const Megabytes: React.FC<{
   sizeInBytes: number;
@@ -25,7 +12,7 @@ const Megabytes: React.FC<{
     unit: "byte",
     unitDisplay: "narrow",
   }).format(sizeInBytes);
-  return <span style={light}>{megabytes}</span>;
+  return <span className="opacity-60">{megabytes}</span>;
 };
 
 export const DownloadButton: React.FC<{
@@ -41,12 +28,12 @@ export const DownloadButton: React.FC<{
   }
 
   return (
-    <div style={row}>
+    <div className="flex">
       <Button secondary onClick={undo}>
         <UndoIcon></UndoIcon>
       </Button>
       <Spacing></Spacing>
-      <a style={link} href={state.url}>
+      <a href={state.url}>
         <Button>
           Download video
           <Spacing></Spacing>
