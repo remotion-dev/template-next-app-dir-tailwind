@@ -4,13 +4,13 @@
 
 This is a Next.js template for building programmatic video apps, with [`@remotion/player`](https://remotion.dev/player) and [`@remotion/lambda`](https://remotion.dev/lambda) built in.
 
-This template uses the Next.js App directory. There is a [Pages directory version](https://github.com/remotion-dev/template-next-pages-dir) of this template available.
+This template uses the Next.js App directory, with TailwindCSS. There is a [Non-TailwindCSS version](https://github.com/remotion-dev/template-next-app-dir), and a [Pages directory version](https://github.com/remotion-dev/template-next-pages-dir) of this template available.
 
 <img src="https://github.com/remotion-dev/template-next/assets/1629785/c9c2e5ca-2637-4ec8-8e40-a8feb5740d88" />
 
 ## Getting Started
 
-[Use this template](https://github.com/new?template_name=template-next-app-dir&template_owner=remotion-dev) to clone it into your GitHub account. Run
+[Use this template](https://github.com/new?template_name=template-next-app-dir-tailwind&template_owner=remotion-dev) to clone it into your GitHub account. Run
 
 ```
 npm i
