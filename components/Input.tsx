@@ -9,7 +9,7 @@ export const Input: React.FC<{
     (e) => {
       setText(e.currentTarget.value);
     },
-    [setText]
+    [setText],
   );
 
   return (
