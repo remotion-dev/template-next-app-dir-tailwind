@@ -19,7 +19,7 @@ npm i
 afterwards. Alternatively, use this command to scaffold a project:
 
 ```
-npx create-video@latest --next
+npx create-video@latest --next-tailwind
 ```
 
 ## Commands
