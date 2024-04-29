@@ -6,7 +6,7 @@ import {
 import dotenv from "dotenv";
 import path from "path";
 import { RAM, REGION, SITE_NAME, TIMEOUT } from "./config.mjs";
-import { webpackOverride } from "./remotion/webpack-override";
+import { webpackOverride } from "./remotion/webpack-override.mjs";
 
 console.log("Selected region:", REGION);
 dotenv.config();
