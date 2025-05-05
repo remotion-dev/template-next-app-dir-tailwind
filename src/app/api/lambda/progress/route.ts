@@ -22,9 +22,11 @@ export const POST = executeApi<ProgressResponse, typeof ProgressRequest>(
     });
 
     if (renderProgress.fatalErrorEncountered) {
+      console.log(renderProgress);
       return {
         type: "error",
         message: renderProgress.errors[0].message,
+        hi: renderProgress
       };
     }
 
