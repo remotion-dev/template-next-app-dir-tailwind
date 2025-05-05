@@ -2,12 +2,13 @@
 import { useEffect, useMemo, useState } from "react";
 import {
   AbsoluteFill,
+  Video,
+  Sequence,
   CalculateMetadataFunction,
   continueRender,
   delayRender,
-  OffthreadVideo,
-  Sequence,
   useVideoConfig,
+  staticFile,
 } from "remotion";
 
 import {preloadVideo} from '@remotion/preload';
@@ -40,7 +41,9 @@ export const calculateCaptionedVideoMetadata: CalculateMetadataFunction<
 
 const SWITCH_CAPTIONS_EVERY_MS = 200;
 
-export const Main:React.FC<{src: string}> = ({src}) => {
+export const Main:React.FC<{
+  src: string;
+}> = ({ src }) => {
  
   const [subtitles, setSubtitles] = useState<Caption[] | null>(null);
   const [handle] = useState(() => delayRender());
@@ -54,7 +57,7 @@ export const Main:React.FC<{src: string}> = ({src}) => {
         // const res = await fetch(`/api/get-captions?url=${src}`);
         // const res = fetch("/sample-video.json")
         // const data = (await res.json()) as Caption[];
-        fetch('/sample-video.json')
+        fetch(staticFile('sample-video.json'))
   .then(response => response.json())
   .then(dats => {
     const data = dats;
@@ -98,18 +101,18 @@ export const Main:React.FC<{src: string}> = ({src}) => {
   return (
     <AbsoluteFill style={{ backgroundColor: "white" }}>
       <AbsoluteFill>
-        {/* <Video
-          pauseWhenBuffering={true}
-          acceptableTimeShiftInSeconds={0.01}
-          style={{ objectFit: "cover" }}
-          src={"https://storage.googleapis.com/tanglish/sample-video1.mp4"}
-        /> */}
-                <OffthreadVideo
+        <Video
           pauseWhenBuffering={true}
           acceptableTimeShiftInSeconds={0.01}
           style={{ objectFit: "cover" }}
           src={"https://storage.googleapis.com/tanglish/sample-video1.mp4"}
         />
+          {/* <Video
+          pauseWhenBuffering={true}
+          acceptableTimeShiftInSeconds={0.01}
+          style={{ objectFit: "cover" }}
+          src={src}
+        /> */}
       </AbsoluteFill>
       {pages.map((page, index) => {
         const nextPage = pages[index + 1] ?? null;
@@ -123,7 +126,6 @@ export const Main:React.FC<{src: string}> = ({src}) => {
 
         return (
           <Sequence
-            premountFor={2000}
             key={index}
             from={subtitleStartFrame}
             durationInFrames={durationInFrames}
