@@ -67,6 +67,7 @@ const { siteName } = await deploySite({
   siteName: SITE_NAME,
   region: REGION,
   options: { webpackOverride },
+  publicDir: path.resolve(process.cwd(), 'public'),
 });
 
 console.log(siteName);
