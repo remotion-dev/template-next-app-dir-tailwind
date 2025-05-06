@@ -34,7 +34,7 @@ export async function GET(request: Request) {
     }
 
     const videoBuffer = await videoResponse.arrayBuffer();
-    const buffer = Buffer.from(videoBuffer);
+    const buffer = Buffer.from(videoBuffer); // 🔧 Fix here
 
     const fileName = `${randomUUID()}.mp4`;
 
@@ -43,7 +43,7 @@ export async function GET(request: Request) {
 
     const filePath = path.join('./downloads', fileName);
     
-    await fs.writeFile(filePath, buffer);
+    await fs.writeFile(filePath, new Uint8Array(buffer));
 
     // Step 2: Read the local file and upload to Gemini
     // const localVideoBuffer = await fs.readFile(filePath);
@@ -54,6 +54,10 @@ export async function GET(request: Request) {
         mimeType: 'video/mp4',
       },
     });
+
+    if (!uploadedFile.name) {
+      throw new Error('File name is undefined');
+    }
 
     // Step 3: Wait until the file is processed
     let fileState = uploadedFile.state;
