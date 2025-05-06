@@ -23,6 +23,7 @@ export async function GET(request: Request) {
       });
     }
 
+    console.log("Yaa so this is where all hell breaks loose")
     // Step 1: Download the video to local folder
     const videoResponse = await fetch(videoUrl);
     console.log("This came ?")
@@ -175,7 +176,7 @@ console.log("before Gemini")
     );
   } catch (error) {
     console.error(error);
-    return new Response(JSON.stringify({ error: 'Internal Server Error' }), {
+    return new Response(JSON.stringify({ error: `Internal Server Error: ${error}` }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
     });
