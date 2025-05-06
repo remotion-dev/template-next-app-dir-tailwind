@@ -25,7 +25,11 @@ const Home: NextPage = () => {
     return {
       src: uploadedURL!,
     };
-  }, [text]);
+  }, [uploadedURL]);
+
+  if(uploadedURL){
+    console.log("uploadedURL", uploadedURL)
+  }
 
   return (
     <div className="min-h-screen bg-black text-white p-4">

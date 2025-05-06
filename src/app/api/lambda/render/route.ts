@@ -34,6 +34,7 @@ export const POST = executeApi<RenderMediaOnLambdaOutput, typeof RenderRequest>(
     }
 
     const result = await renderMediaOnLambda({
+      timeoutInMilliseconds: TIMEOUT * 1000,
       codec: "h264",
       functionName: speculateFunctionName({
         diskSizeInMb: DISK,
@@ -44,7 +45,7 @@ export const POST = executeApi<RenderMediaOnLambdaOutput, typeof RenderRequest>(
       serveUrl: SITE_NAME,
       composition: body.id,
       inputProps: body.inputProps,
-      framesPerLambda: 100,
+      framesPerLambda: 10,
       downloadBehavior: {
         type: "download",
         fileName: "video.mp4",
