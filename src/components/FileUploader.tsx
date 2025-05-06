@@ -82,7 +82,8 @@ export default function FileDrop({ onUploadComplete }: { onUploadComplete: (url:
 
       if (!res.ok) throw new Error("Failed to get upload URL");
 
-      const { uploadUrl, fileUrl } = await res.json();
+      const { uploadUrl, fileUrl, captionUrl } = await res.json();
+      console.log(captionUrl)
 
       const uploadRes = await fetch(uploadUrl, {
         method: "PUT",
@@ -94,7 +95,7 @@ export default function FileDrop({ onUploadComplete }: { onUploadComplete: (url:
 
       setUploadedURL(fileUrl);
       onUploadComplete(fileUrl); // 👈 pass URL to parent
-      alert("Upload successful!");
+      alert("Upload successful and Captions are Ready!");
     } catch (error) {
       console.error("Upload error:", error);
       alert("An error occurred during upload.");

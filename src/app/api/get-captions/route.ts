@@ -4,6 +4,7 @@ import fetch from 'node-fetch';
 import fs from 'fs/promises';
 import path from 'path';
 import { randomUUID } from 'crypto';
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
@@ -11,6 +12,8 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     let videoUrl = searchParams.get('url');
+    const jsonFileName = videoUrl?.replace(/\.mp4$/, '.json')
+
     console.log("URL",`https://pub-449b3b5dd7dc457e86e54d9c58eaa858.r2.dev/uploads/${videoUrl}`)
     videoUrl=`https://pub-449b3b5dd7dc457e86e54d9c58eaa858.r2.dev/uploads/${videoUrl}`
     if (!videoUrl) {
@@ -22,6 +25,7 @@ export async function GET(request: Request) {
 
     // Step 1: Download the video to local folder
     const videoResponse = await fetch(videoUrl);
+    console.log("This came ?")
     if (!videoResponse.ok) {
       return new Response(JSON.stringify({ error: 'Failed to download video' }), {
         status: 500,
@@ -130,27 +134,27 @@ console.log("before Gemini")
 
     const parsedJson = JSON.parse(jsonMatch[1]);
     console.log(parsedJson)
-    const jsonFileName = fileName.replace(/\.mp4$/, '.json');
 
-    // Step 5: Upload JSON to R2
-    // const s3 = new S3Client({
-    //   region: 'auto',
-    //   endpoint: `https://${process.env.CLOUDFLARE_ACCOUNT_ID}.r2.cloudflarestorage.com`,
-    //   credentials: {
-    //     accessKeyId: process.env.R2_ACCESS_KEY_ID!,
-    //     secretAccessKey: process.env.R2_SECRET_ACCESS_KEY!,
-    //   },
-    // });
+    console.log(jsonFileName)
 
-    // await s3.send(
-    //   new PutObjectCommand({
-    //     Bucket: process.env.R2_BUCKET_NAME!,
-    //     Key: `uploads/${jsonFileName}`,
-    //     Body: JSON.stringify(parsedJson, null, 2),
-    //     ContentType: 'application/json',
+    const s3 = new S3Client({
+      region: 'auto',
+      endpoint: `https://${process.env.CLOUDFLARE_ACCOUNT_ID}.r2.cloudflarestorage.com`,
+      credentials: {
+        accessKeyId: process.env.R2_ACCESS_KEY_ID!,
+        secretAccessKey: process.env.R2_SECRET_ACCESS_KEY!,
+      },
+    });
 
-    //   })
-    // );
+    await s3.send(
+      new PutObjectCommand({
+        Bucket: process.env.R2_BUCKET_NAME!,
+        Key: `uploads/${jsonFileName}`,
+        Body: JSON.stringify(parsedJson, null, 2),
+        ContentType: 'application/json',
+
+      })
+    );
     console.log("doneee")
 
     // Optional: Delete the downloaded video file

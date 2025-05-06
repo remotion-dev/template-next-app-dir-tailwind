@@ -20,6 +20,7 @@ export const POST = executeApi<ProgressResponse, typeof ProgressRequest>(
       region: REGION as AwsRegion,
       renderId: body.id,
     });
+    console.log(renderProgress)
 
     if (renderProgress.fatalErrorEncountered) {
       console.log(renderProgress);

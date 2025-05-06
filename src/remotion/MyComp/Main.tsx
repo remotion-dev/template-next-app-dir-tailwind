@@ -71,7 +71,8 @@ export const Main:React.FC<{
         //   const parsedSubs = data.json;
         //   setSubtitles(parsedSubs);
         // }
-        fetch("https://pub-449b3b5dd7dc457e86e54d9c58eaa858.r2.dev/uploads/09b234d9-236b-4fb1-be6e-cf9d06421f57.json")
+        
+        fetch(`https://pub-449b3b5dd7dc457e86e54d9c58eaa858.r2.dev/uploads/${src.replace(".mp4",".json")}`)
   .then(response => response.json())
   .then(dats => {
     // const data = [
@@ -157,13 +158,6 @@ export const Main:React.FC<{
     });
   }, [subtitles]);
 
-  // if (!subtitles) {
-  //   return (
-  //     <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", backgroundColor: "white" }}>
-  //       <div style={{ fontSize: 40 }}>Loading subtitles...</div>
-  //     </AbsoluteFill>
-  //   );
-  // }
 
   return (
     <AbsoluteFill style={{ backgroundColor: "white" }}>
