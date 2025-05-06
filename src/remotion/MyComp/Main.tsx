@@ -9,9 +9,6 @@ import {
   delayRender,
   useVideoConfig,
 } from "remotion";
-
-import { staticFile } from "remotion";
-
 import {preloadVideo} from '@remotion/preload';
 import { z } from "zod";
 import SubtitlePage from "./SubtitlePage";
