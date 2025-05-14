@@ -8,12 +8,12 @@ const user = null;
 const signOut = () => {};
 
   return (
-<nav className="fixed left-1/2 -translate-x-1/2 z-50 w-full
+<nav className="fixed z-50 w-full
      flex justify-between items-center py-4 px-6 md:px-12 lg:px-20 
      bg-white/10 backdrop-blur-lg border border-b border-t-0 border-l-0 border-r-0 border-white/20 
      shadow-xl">
 
-      <div className='max-w-7xl justify-between w-full flex'>
+      <div className='max-w-7xl mx-auto items-center justify-between w-full flex'>
 
       <div className="flex max-w-7xl items-center">
         <Link href="/">
@@ -30,9 +30,9 @@ const signOut = () => {};
           <>   
             <button
               onClick={signOut}
-              className="bg-yellow-300 px-6 py-2.5 cursor-pointer rounded-full text-sm font-medium hover:opacity-90 transition"
+              className="bg-red-800 border border-white/30 px-6 py-2.5 cursor-pointer rounded-full text-sm font-medium hover:opacity-90 transition"
             >
-            <span className='text-black'>Sign out</span> 
+            <span className='text-white'>Sign out</span> 
             </button>
             <Link href="/dashboard" className="flex items-center gap-2 hover:opacity-90 transition">
               <Image  
@@ -45,7 +45,7 @@ const signOut = () => {};
           </>
         ) : (
           <Link href="/login">
-            <button className="bg-yellow-300 cursor-pointer text-black px-4 py-2 rounded-full text-sm font-medium hover:opacity-90 transition">
+            <button className="bg-red-800 border border-white/30 cursor-pointer text-white px-4 py-2 rounded-full text-sm font-medium hover:opacity-90 transition">
               Sign up
             </button>
           </Link>
