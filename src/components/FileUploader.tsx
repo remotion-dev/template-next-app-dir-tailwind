@@ -109,15 +109,15 @@ export default function FileDrop({ onUploadComplete }: { onUploadComplete: (url:
       <div
         className={`relative w-full max-w-xl text-black rounded-lg border-2 border-dashed p-8 flex flex-col items-center justify-center transition-all
           backdrop-blur-md cursor-pointer
-          ${isDragging ? "border-green-400 bg-yellow-100/20" : "border-gray-300/30 bg-white/5"}`}
+          ${isDragging ? "border-red-400 bg-yellow-100/20" : "border-gray-300/30 bg-white/5"}`}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
         onClick={handleClick}
       >
         <div className="relative z-10 flex flex-col items-center text-center">
-          <div className="mb-4 rounded-full p-4">
-            <CloudArrowUp className="h-6 w-6 text-green-600" />
+          <div className="mb-2 rounded-full p-4">
+            <CloudArrowUp className="h-6 w-6 text-red-600" />
           </div>
           <h3 className="mb-2 text-xl font-semibold text-white/70">
             {file ? "File ready to submit" : "Upload your video"}

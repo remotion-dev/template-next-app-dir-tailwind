@@ -1,16 +1,16 @@
 import "../../styles/global.css";
-import { Metadata, Viewport } from "next";
+import { Metadata, } from "next";
 
 export const metadata: Metadata = {
-  title: "Remotion and Next.js",
-  description: "Remotion and Next.js",
+  title: "Tanglish Captions",
+  description: "Get your captions in Tanglish",
 };
 
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 1,
-};
+// export const viewport: Viewport = {
+//   width: "device-width",
+//   initialScale: 1,
+//   maximumScale: 1,
+// };
 
 export default function RootLayout({
   children,
