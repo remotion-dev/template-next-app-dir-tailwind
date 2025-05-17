@@ -152,11 +152,11 @@ export default function FileDrop({ onUploadComplete }: { onUploadComplete: (url:
 
       {uploadedURL && (
         <div className="mt-6 w-full max-w-xl">
-          <p className="text-white">Uploaded Video URL:</p>
-          <a href={uploadedURL} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
+          {/* <p className="text-white">Uploaded Video URL:</p> */}
+          {/* <a href={uploadedURL} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
             {uploadedURL}
-          </a>
-          <video controls className="mt-4 w-full">
+          </a> */}
+          <video controls className="mt-4 rounded-xl w-full">
             <source src={`https://pub-449b3b5dd7dc457e86e54d9c58eaa858.r2.dev/uploads/${uploadedURL}`} type="video/mp4" />
             Your browser does not support the video tag.
           </video>

@@ -48,7 +48,7 @@ export default function Hero() {
           </div>
 
 
-          <h1 className="max-w-4xl  py-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="max-w-4xl  py-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-5xl font-bold text-transparent sm:text-5xl md:text-6xl lg:text-7xl">
           {/* Reels ah kudunga<br />Captions ah edunga */}
           Stop wasting hours <br /> captioning your reels
           </h1>
