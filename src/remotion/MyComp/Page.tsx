@@ -11,8 +11,7 @@ import { TheBoldFont } from "./load-font";
 import { fitText } from "@remotion/layout-utils";
 import { makeTransform, scale, translateY } from "@remotion/animation-utils";
 import { TikTokPage } from "@remotion/captions";
-import { random } from "remotion";
-import { start } from "repl";
+
 
 const fontFamily = TheBoldFont;
 
@@ -69,7 +68,7 @@ export const Page: React.FC<{
             ]),
           }}
         >
-          {page.tokens.map((t) => {
+          {page.tokens.map((t, idx) => {
             console.log("Token", t);
             console.log("Page", page);
             console.log("Time in ms", timeInMs);
@@ -86,7 +85,7 @@ export const Page: React.FC<{
 
             return (
               <span
-                key={startRelativeToSequence}
+                key={`${startRelativeToSequence}-${idx}`}
                 style={{
                   display: "inline",
                   whiteSpace: "pre",
