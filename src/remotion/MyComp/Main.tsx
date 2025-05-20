@@ -181,6 +181,7 @@ export const Main:React.FC<{
             key={index}
             from={subtitleStartFrame}
             durationInFrames={durationInFrames}
+            premountFor={100}
           >
             <SubtitlePage page={page} />
           </Sequence>

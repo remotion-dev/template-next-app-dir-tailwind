@@ -61,6 +61,7 @@ const Home: NextPage = () => {
         <div className="max-w-screen-md m-auto mb-5">
         <div className="overflow-hidden rounded-geist shadow-[0_0_200px_rgba(0,0,0,0.15)] mb-10 mt-16">
           <Player
+
             component={Main}
             inputProps={inputProps}
             durationInFrames={DURATION_IN_FRAMES}
@@ -86,7 +87,7 @@ const Home: NextPage = () => {
         // <FileDrop onUploadComplete={(url) => setUploadedURL(url)} />
         <>
         <Nav />
-        <Hero />
+        <Hero onUploadComplete={(url) => setUploadedURL(url)}/>
         </>
       )}
     </div>

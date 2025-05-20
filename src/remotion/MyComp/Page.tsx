@@ -11,6 +11,8 @@ import { TheBoldFont } from "./load-font";
 import { fitText } from "@remotion/layout-utils";
 import { makeTransform, scale, translateY } from "@remotion/animation-utils";
 import { TikTokPage } from "@remotion/captions";
+import { random } from "remotion";
+import { start } from "repl";
 
 const fontFamily = TheBoldFont;
 
@@ -84,7 +86,7 @@ export const Page: React.FC<{
 
             return (
               <span
-                key={t.fromMs}
+                key={startRelativeToSequence}
                 style={{
                   display: "inline",
                   whiteSpace: "pre",
