@@ -119,10 +119,11 @@ console.log("before Gemini")
         },
       ]),
     });
-
+console.log("Hi",result)
     const output = result.text?.trim();
     if (!output) {
-      return new Response(JSON.stringify({ error: 'No response from model' }), {
+      console.log("Anyways:",result)
+      return new Response(JSON.stringify({ error: 'No response from model', response: result }), {
         status: 500,
         headers: { 'Content-Type': 'application/json' },
       });
